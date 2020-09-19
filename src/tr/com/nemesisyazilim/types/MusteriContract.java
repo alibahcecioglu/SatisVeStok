@@ -38,9 +38,7 @@ public class MusteriContract {
 		this.sehirId = sehirId;
 	}
 	public String toString() {
-		return "MusteriContract [id=" + id + ", adiSoyadi=" + adiSoyadi
-				+ ", telefon=" + telefon + ", adres=" + adres + ", sehirId="
-				+ sehirId + "]";
+		return adiSoyadi;
 	}
 	
 	

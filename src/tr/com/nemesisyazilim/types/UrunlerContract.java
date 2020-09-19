@@ -44,8 +44,7 @@ public class UrunlerContract {
 		this.tarih = tarih;
 	}
 	public String toString() {
-		return "UrunlerContract [id=" + id + ", adi=" + adi + ", kategoriId="
-				+ kategoriId + ", tarih=" + tarih + ", fiyat=" + fiyat + "]";
+		return  adi;
 	}
 	
 	

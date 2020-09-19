@@ -1,13 +1,12 @@
 package tr.com.nemesisyazilim.types;
 
-import java.sql.Date;
 
 public class StokContract {
 
 	private int id;
 	private int personelId;
 	private int urunId;
-	private Date tarih;
+	private String tarih;
 	private int adet;
 	
 	
@@ -29,10 +28,11 @@ public class StokContract {
 	public void setUrunId(int urunId) {
 		this.urunId = urunId;
 	}
-	public Date getTarih() {
+
+	public String getTarih() {
 		return tarih;
 	}
-	public void setTarih(Date tarih) {
+	public void setTarih(String tarih) {
 		this.tarih = tarih;
 	}
 	public int getAdet() {

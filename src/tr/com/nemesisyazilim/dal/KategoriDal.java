@@ -87,13 +87,52 @@ public class KategoriDal extends ObjectHelper implements DALInterfaces<KategoriC
 		return dataContract;
 	}
 	
+	public List<KategoriContract> getSearchKategori(String kategoriAdi) {
+
+		List<KategoriContract> dataContract=new ArrayList<KategoriContract>();
+		Connection connection=getconnection();
+		
+		
+		try {
+			
+			Statement statement=connection.createStatement();
+			ResultSet result=statement.executeQuery("SELECT * FROM Kategori WHERE Adi LIKE '"+"%"+kategoriAdi+"%"+"'");
+			while(result.next()){
+				
+				KategoriContract kContract=new KategoriContract();
+				kContract.setId(result.getInt("Id"));
+				kContract.setAdi(result.getString("Adi")); 
+				kContract.setParentId(result.getInt("ParentId"));
+				
+				dataContract.add(kContract);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dataContract;
+	}
+	
 	public KategoriContract Delete(KategoriContract entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void Update(KategoriContract entity) {
-		// TODO Auto-generated method stub
+		Connection connection=getconnection();
+		try {
+			
+			Statement statement=connection.createStatement();
+			statement.executeUpdate("UPDATE Kategori SET Adi='"+entity.getAdi()+"',ParentId="+entity.getParentId()+" Where Id="+entity.getId()+")");
+			statement.close();
+			connection.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

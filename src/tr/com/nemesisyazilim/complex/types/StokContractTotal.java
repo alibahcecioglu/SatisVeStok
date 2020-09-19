@@ -1,17 +1,13 @@
 package tr.com.nemesisyazilim.complex.types;
 
-import java.sql.Date;
-
-public class SatisContractComplex {
+public class StokContractTotal {
 
 	private int id;
 	private String personelAdi;
-	private String musteriAdi;
 	private String urunAdi;
 	private String tarih;
 	private int adet;
-	
-	
+	private int toplam;
 	public int getId() {
 		return id;
 	}
@@ -23,12 +19,6 @@ public class SatisContractComplex {
 	}
 	public void setPersonelAdi(String personelAdi) {
 		this.personelAdi = personelAdi;
-	}
-	public String getMusteriAdi() {
-		return musteriAdi;
-	}
-	public void setMusteriAdi(String musteriAdi) {
-		this.musteriAdi = musteriAdi;
 	}
 	public String getUrunAdi() {
 		return urunAdi;
@@ -48,12 +38,16 @@ public class SatisContractComplex {
 	public void setAdet(int adet) {
 		this.adet = adet;
 	}
+	public int getToplam() {
+		return toplam;
+	}
+	public void setToplam(int toplam) {
+		this.toplam = toplam;
+	}
 	public Object[] getVeriler(){
-		Object[] veriler={id,personelAdi,musteriAdi,urunAdi,tarih,adet};
+		Object[] veriler={id,urunAdi,personelAdi,adet,tarih,toplam};
 				
 		return veriler;
 	}
-	
 
-	
 }

@@ -7,12 +7,16 @@ import javax.swing.*;
 
 
 import tr.com.nemesisyazilim.*;
+import tr.com.nemesisyazilim.dal.AccountsDal;
+import tr.com.nemesisyazilim.frontEnd.KategoriDuzenleFE;
 import tr.com.nemesisyazilim.frontEnd.KategoriEkle;
+import tr.com.nemesisyazilim.frontEnd.LoginFE;
 import tr.com.nemesisyazilim.frontEnd.PersonelEkleFe;
 import tr.com.nemesisyazilim.frontEnd.UrunEkleFe;
 import tr.com.nemesisyazilim.frontEnd.musteriEkleFe;
 import tr.com.nemesisyazilim.frontEnd.sifreIslemleriFe;
 import tr.com.nemesisyazilim.frontEnd.yetkiEkleFe;
+import tr.com.nemesisyazilim.types.PersonelContract;
 
 
 public class FeMenu {
@@ -72,7 +76,22 @@ public class FeMenu {
 	musterilerMenu.add(musteriDuzenleItem);
 	musterilerMenu.add(sehirDuzenleItem);
 	bar.add(musterilerMenu);
+	PersonelContract personel=(PersonelContract) LoginFE.emailBox.getSelectedItem();
 	
+	
+	if(new AccountsDal().getYetkiId(personel.getId()).getId()==2){
+		
+		personellerMenu.hide();
+	}else if(new AccountsDal().getYetkiId(personel.getId()).getId()==2){
+		
+		musterilerMenu.hide();
+		personellerMenu.hide();
+		urunlerMenu.hide();
+		
+	}
+	
+	
+
 	
 	
 	urunEkleItem.addActionListener(new ActionListener(){
@@ -106,6 +125,25 @@ public class FeMenu {
 			
 		}
 	});
+	
+	kategoriDuzenleItem.addActionListener(new ActionListener(){
+
+		public void actionPerformed(ActionEvent arg0) {
+		
+				SwingUtilities.invokeLater(new Runnable(){
+				
+				public void run(){
+				
+					new KategoriDuzenleFE();
+				}
+			});
+			
+		}
+		
+		
+		
+	});
+	
 	
 	personelEkleItem.addActionListener(new ActionListener(){
 
